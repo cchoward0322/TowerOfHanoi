@@ -1,4 +1,7 @@
 import tkinter as tk
+import time
+
+#USING TKINTER, OTHER USES TURTLE
 
 #TO RUN WINDOW, open terminal and type: python visualizer.py
 
@@ -7,7 +10,12 @@ root = tk.Tk()
 root.title("Tower of Hanoi: Visualizer")
 
 #setting window dimensions
-root.geometry("600x400")
+WIDTH = 600
+HEIGHT = 400
+canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT)
+canvas.pack()
+
+#root.geometry("600x400")
 
 #add text onto the screen
 label = tk.Label(root, text = "This is a visualizer for the Tower of Hanoi problem.")

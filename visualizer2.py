@@ -1,0 +1,5 @@
+import turtle
+import time
+
+#THIS VISUALIZER USES TURTLE, OTHER USES TKINTER
+
