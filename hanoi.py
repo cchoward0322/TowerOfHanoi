@@ -29,5 +29,7 @@ def hanoi(n, start, end):
         pm(start, end)  # pm stands for print moves, which prints the move of the nth disk from start to end
         hanoi(n - 1, temp, end)  # Move the n-1 disks from temp to end
 
-answer = solve(3, 1, 3)
-print(answer)
+
+if __name__ == "__main__":
+    answer = solve(3, 1, 3)
+    print(answer)

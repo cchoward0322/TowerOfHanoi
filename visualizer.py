@@ -1,9 +1,12 @@
 import tkinter as tk
 import time
+from hanoi import solve
 
 #USING TKINTER, OTHER USES TURTLE
 
 #TO RUN WINDOW, open terminal and type: python visualizer.py
+
+# Imported func for recursive problem
 
 #creating the main window
 root = tk.Tk()
