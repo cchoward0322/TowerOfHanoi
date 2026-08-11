@@ -30,6 +30,7 @@ def hanoi(n, start, end):
         hanoi(n - 1, temp, end)  # Move the n-1 disks from temp to end
 
 
+# needed so we did not loop
 if __name__ == "__main__":
     answer = solve(3, 1, 3)
     print(answer)
