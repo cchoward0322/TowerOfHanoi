@@ -4,33 +4,38 @@
 
 # only change is now the pm records each move in moves
 
-# Turning moves into data as (start, end) pair
+#turning moves into data as (start, end) pair
 # recording pm
 moves = []
 
-# Moved the pm func above def hanoi for syntax
 def pm(start, end):
     print(f"Move disk from {start} to {end}")
-    moves.append((start, end)) # record so UI can play later
+    moves.append((start, end)) #record every move so visualizer can play later
 
-# Needs to be cleared before so it does not stack if solve is called twice
-def solve(n, start, end):
+#clear pegs each call so it doesn't keep adding to moves
+def solve(n, start, end, num_pegs=3):
     moves.clear()
-    hanoi(n, start, end)
+    hanoi(n, start, end, num_pegs)
     return moves
 
 
-def hanoi(n, start, end):
-    if n == 1:
-        pm(start, end)  # Move the single disk directly from start to end
+def hanoi(n, start, end, num_pegs=3):
+    if n == 1: #run UI with only one disk
+        pm(start, end)  #move the single disk directly from start to end
     else:
-        temp = 6 - start - end  # Calculate the temporary peg (assuming pegs are numbered 1, 2, 3), 6 represents the sum of the peg numbers (1 + 2 + 3)
-        hanoi(n - 1, start, temp)  # Move n-1 disks from start to temp
-        pm(start, end)  # pm stands for print moves, which prints the move of the nth disk from start to end
-        hanoi(n - 1, temp, end)  # Move the n-1 disks from temp to end
+        # Find an auxiliary peg (any peg that is not start or end)
+        temp = None
+        for peg in range(1, num_pegs + 1):
+            if peg != start and peg != end:
+                temp = peg
+                break
+        
+        hanoi(n - 1, start, temp, num_pegs)  #move n-1 disks from start to temp
+        pm(start, end)  #move the largest disk from start to end
+        hanoi(n - 1, temp, end, num_pegs)  #move n-1 disks from temp to end
 
 
 # needed so we did not loop
 if __name__ == "__main__":
-    answer = solve(3, 1, 3)
+    answer = solve(3, 1, 3, num_pegs=3)
     print(answer)

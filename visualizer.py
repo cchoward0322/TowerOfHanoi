@@ -12,6 +12,10 @@ from hanoi import solve
 root = tk.Tk()
 root.title("Tower of Hanoi: Visualizer")
 
+#CONFIGURATION: Change these values to adjust the puzzle!
+num_disks = 3  #change to any number (3, 4, 5, 7, etc.)
+num_pegs = 3   #kept at 3 for testing
+
 #setting window dimensions
 WIDTH = 600
 HEIGHT = 400
@@ -24,9 +28,16 @@ root.geometry("800x500")
 #root.geometry("600x400")
 
 peg_X = {1: 100, 2: 300, 3: 500} #centers of each peg, x axis
-pegs = {1:[3,2,1], 2:[], 3:[]} #state of each peg
-colors = {1: "green", 2: "blue", 3: "red"} # color of each disk
-moves = solve(3, 1, 3)      #from hanoi.py
+
+# state of each peg
+#first peg gets all disks in descending order
+pegs = {1: list(range(num_disks, 0, -1)), 2: [], 3: []}
+
+#generate colors dynamically for all disks
+disk_colors = ["green", "blue", "red", "yellow", "orange", "purple", "cyan", "magenta"]
+colors = {i + 1: disk_colors[i % len(disk_colors)] for i in range(num_disks)}
+
+moves = solve(num_disks, 1, num_pegs)      #from hanoi.py
 step_count = 0
 
 #add text onto the screen
@@ -82,13 +93,18 @@ def draw_game():        # so it can run more then just once
     canvas.create_rectangle(297, 200, 303, 350, fill="gray70")
     canvas.create_rectangle(497, 200, 503, 350, fill="gray70")
 
-    # testing to print out locations of movement of disks on pegs
+    #draw disks on pegs, scale disk size based on number of disks
+    #calculate max disk width to prevent mishappening of disks when there are many disks
+    max_width = 90  # Maximum width a disk can have
+    base_width = max_width / num_disks if num_disks > 0 else 20
+    
     for peg in pegs:
         stack = pegs[peg]       # the list of disks in this stack
         for level in range(len(stack)):
             disk = stack[level]
             x = peg_X[peg]  # center of each peg
-            half = 5 + 20*disk
+            # scale disk width based on disk size and number of disks
+            half = base_width*disk / 2
             bottom = 350 - 20*level
             top = bottom - 20
 
