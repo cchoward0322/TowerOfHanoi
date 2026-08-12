@@ -13,7 +13,7 @@ root = tk.Tk()
 root.title("Tower of Hanoi: Visualizer")
 
 #CONFIGURATION: Change these values to adjust the puzzle!
-num_disks = 9  #change to any number (3, 4, 5, 7, etc.)
+num_disks = 5  #change to any number (3, 4, 5, 7, etc.)
 num_pegs = 3   #kept at 3 for testing
 
 #setting window dimensions
