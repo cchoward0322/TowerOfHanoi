@@ -18,7 +18,7 @@ helped create visualizer:       https://www.youtube.com/watch?v=6aKmTV6eYt8
 [ Isaiah Fox & Cassandra Howard
 
     We used a .py file to execute the recurion block aswell as to operate the UI visualizer,
-    and we're currently running Python version 3.14.3. 
+    and we're currently running Python version 3.11+ with tkinter. 
     
     CONTRIBUTIONS:
         Recursion block implemented by CH, gathered from given resources on the rubric. Following the
@@ -30,14 +30,22 @@ helped create visualizer:       https://www.youtube.com/watch?v=6aKmTV6eYt8
         The block is able to take n number of disks greater than or equal to one!
 
         Initial creation of executable window, CH.
-        Utilized the recursion block, built the pegs and disks (colors & dimensions),
-        and origanally worked out the operations to move the disks paired with the recurion block, IF.
+        Created hanoi.py, changed pm() to record each move into a list as (start, end) pair instead of just printing, IF.
+        Utilized the recursion block, built the pegs and disks (colors & dimensions & placement), IF.
+        Origanally worked out the operations to move the disks paired with the recurion block, IF.
+        Modeled each peg as a stack, wrote draw_game(), next_step(), solve() IF.
         Furbished UI with more labels, list of moves, and adding more colored disks, CH.
 
     To implement desired number of disks, see line 16 in visualizer.py and enter the # of disks you'd like to use!
 
-    To run the UI head to "visualizer.py" file 
-    and enter < python visualizer.py >. 
+    
+    RUN INSTRUCTIONS
+
+        1) Requires python 3.11+ with tkinter.
+        2) Open the terminal in the project folder.
+        3) Run <python visualizer.py>.
+        4) Locate window and click "Next Move!" to advance one move at a time.
+        5) To change number of disks, edit num_disks on line 16 (up to 7).
 
     To ensure it gathers all the information given, run and close
     the window twice then proceed! Clicking the "Next Move!" button shifts the disks onto the pegs according to the 
