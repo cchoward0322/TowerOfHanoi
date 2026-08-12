@@ -2,7 +2,7 @@ import tkinter as tk
 import time
 from hanoi import solve
 
-#USING TKINTER, OTHER USES TURTLE
+#USING TKINTER
 
 #TO RUN WINDOW, open terminal and type: python visualizer.py
 
@@ -35,6 +35,17 @@ label.place(x=10, y=50)
 
 label2 = tk.Label(root, text = "You can use this window to visualize the steps taken to solve the problem!")
 label2.place(x=10, y=70)
+
+
+#add text onto the screen labeling each peg (1-3)
+label3 = tk.Label(root, text = "Peg 1")
+label3.place(x=90, y=180)
+
+label4 = tk.Label(root, text = "Peg 2")
+label4.place(x=290, y=180)
+
+label5 = tk.Label(root, text = "Peg 3")
+label5.place(x=490, y=180)
 
 #create a frame to dipslay list of moves (peg -> peg) on right side of window
 #setting dimensions of the frame to fit the moves display
