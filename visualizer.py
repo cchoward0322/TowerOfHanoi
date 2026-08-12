@@ -18,6 +18,9 @@ HEIGHT = 400
 canvas = tk.Canvas(root, width=WIDTH, height=HEIGHT)
 canvas.pack()
 
+#adjust window size to fit moves display
+root.geometry("800x500")
+
 #root.geometry("600x400")
 
 peg_X = {1: 100, 2: 300, 3: 500} #centers of each peg, x axis
@@ -32,6 +35,27 @@ label.place(x=10, y=50)
 
 label2 = tk.Label(root, text = "You can use this window to visualize the steps taken to solve the problem!")
 label2.place(x=10, y=70)
+
+#create a frame to dipslay list of moves (peg -> peg) on right side of window
+#setting dimensions of the frame to fit the moves display
+moves_frame = tk.Frame(root, bg="lightgray", width=150, height=150)
+moves_frame.place(x=620, y=0)
+
+#lightgrey box labeled "Moves:"
+moves_label = tk.Label(moves_frame, text="Moves:", bg="lightgray", font=("Arial", 10, "bold"))
+moves_label.pack(side=tk.TOP, padx=5, pady=5)
+
+#add a scrollable text widget to display moves (if needed)
+moves_text = tk.Text(moves_frame, width=20, height=8, font=("Arial", 8))
+moves_scrollbar = tk.Scrollbar(moves_frame, command=moves_text.yview)
+moves_text.config(yscrollcommand=moves_scrollbar.set)
+moves_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+moves_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+# Populate the text widget with all moves
+for i, (start, end) in enumerate(moves):
+    moves_text.insert(tk.END, f"{i+1}. Peg {start} → {end}\n")
+moves_text.config(state=tk.DISABLED)  #make it read-only, no manipulation from user end
 
 # tested disks as rectangles
 #canvas.create_rectangle(35, 330, 165, 350, fill="red", outline = "black")
@@ -71,6 +95,15 @@ def next_step():
     disk = pegs[start].pop()    #remove the top disk from the start peg and keep it
     pegs[end].append(disk)      #put it ontop of the last peg
     step_count = step_count + 1     #done one move
+
+    #as pegs move, next steps on right side are highlighted in yellow
+    moves_text.config(state=tk.NORMAL)
+    moves_text.tag_remove("highlight", "1.0", tk.END)
+    current_line = f"{step_count}.0"
+    moves_text.tag_add("highlight", current_line, f"{step_count}.end")
+    moves_text.tag_config("highlight", background="yellow")
+    #moves_text.see(current_line)  #scroll to show current move
+    moves_text.config(state=tk.DISABLED)
 
     draw_game()        #redraw board at new state
 
