@@ -13,7 +13,7 @@ root = tk.Tk()
 root.title("Tower of Hanoi: Visualizer")
 
 #CONFIGURATION: Change these values to adjust the puzzle!
-num_disks = 3  #change to any number (3, 4, 5, 7, etc.)
+num_disks = 9  #change to any number (3, 4, 5, 7, etc.)
 num_pegs = 3   #kept at 3 for testing
 
 #setting window dimensions
@@ -68,7 +68,7 @@ moves_label = tk.Label(moves_frame, text="Moves:", bg="lightgray", font=("Arial"
 moves_label.pack(side=tk.TOP, padx=5, pady=5)
 
 #add a scrollable text widget to display moves (if needed)
-moves_text = tk.Text(moves_frame, width=20, height=8, font=("Arial", 8))
+moves_text = tk.Text(moves_frame, width=20, height=10, font=("Arial", 8))
 moves_scrollbar = tk.Scrollbar(moves_frame, command=moves_text.yview)
 moves_text.config(yscrollcommand=moves_scrollbar.set)
 moves_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
