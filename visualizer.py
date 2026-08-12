@@ -74,7 +74,7 @@ moves_text.config(yscrollcommand=moves_scrollbar.set)
 moves_text.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 moves_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-# Populate the text widget with all moves
+#load the text box with the moves from cut=rated list of moves
 for i, (start, end) in enumerate(moves):
     moves_text.insert(tk.END, f"{i+1}. Peg {start} → {end}\n")
 moves_text.config(state=tk.DISABLED)  #make it read-only, no manipulation from user end
