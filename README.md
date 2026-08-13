@@ -30,11 +30,13 @@ helped create visualizer:       https://www.youtube.com/watch?v=6aKmTV6eYt8
         The block is able to take n number of disks greater than or equal to one!
 
         Initial creation of executable window, CH.
-        Created hanoi.py, changed pm() to record each move into a list as (start, end) pair instead of just printing, IF.
+        Created hanoi.py file, changed pm() to record each move into a list as (start, end) pair instead of just printing, IF.
         Utilized the recursion block, built the pegs and disks (colors & dimensions & placement), IF.
         Origanally worked out the operations to move the disks paired with the recurion block, IF.
         Modeled each peg as a stack, wrote draw_game(), next_step(), solve() IF.
         Furbished UI with more labels, list of moves, and adding more colored disks, CH.
+        Read.me write up, CH & IF.
+        projectExplanation.pdf, CH.
 
     To implement desired number of disks, see line 16 in visualizer.py and enter the # of disks you'd like to use!
 
@@ -45,7 +47,7 @@ helped create visualizer:       https://www.youtube.com/watch?v=6aKmTV6eYt8
         2) Open the terminal in the project folder.
         3) Run <python visualizer.py>.
         4) Locate window and click "Next Move!" to advance one move at a time.
-        5) To change number of disks, edit num_disks on line 16 (up to 7).
+        5) To change number of disks, edit num_disks on line 16 (up to 9, or more if you'd like!).
 
     To ensure it gathers all the information given, run and close
     the window twice then proceed! Clicking the "Next Move!" button shifts the disks onto the pegs according to the 
